@@ -4,11 +4,11 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 
 const navItems = [
   { name: "Home", href: "/" },
-  { name: "About", href: "#about" },
+  { name: "About", href: "/about" },
   { name: "Results", href: "/results" },
-  { name: "Drivers", href: "#drivers" },
-  { name: "Teams", href: "#teams" },
-  { name: "Simulator", href: "#simulator" },
+  { name: "Drivers", href: "/drivers" },
+  { name: "Teams", href: "/teams" },
+  { name: "Simulator", href: "/simulator" },
 ];
 
 export const Navbar = () => {
@@ -25,14 +25,12 @@ export const Navbar = () => {
   const handleAnchorClick = (e, href) => {
     e.preventDefault();
 
-    // If we are already on home page
     if (location.pathname === "/") {
       const section = document.querySelector(href);
       if (section) {
         section.scrollIntoView({ behavior: "smooth" });
       }
     } else {
-      // Navigate to home, then scroll after load
       navigate("/" + href);
     }
   };
@@ -40,18 +38,19 @@ export const Navbar = () => {
   return (
     <nav
       className={cn(
-        "fixed w-full z-40 transition-all duration-300",
-        isScrolled ? "py-3 bg-background/80 backdrop-blur-md shadow-xs" : "py-5"
+        "fixed w-full z-40 transition-all duration-300 backdrop-blur-md",
+        isScrolled
+          ? "py-3 shadow-xs bg-black/10 dark:bg-white/10"
+          : "py-5 bg-transparent"
       )}
     >
       <div className="container flex items-center justify-between">
         <Link
           to="/"
-          className="text-xl font-bold text-primary flex items-center"
+          className="text-xl font-bold text-foreground flex items-center"
         >
           <span className="relative z-10">
-            <span className="text-glow text-foreground">Formula 1</span>{" "}
-            Simulator
+            <span className="text-primary">Project</span> F1
           </span>
         </Link>
 
