@@ -1,60 +1,82 @@
 import { cn } from "@/lib/utils";
 import { useEffect, useState } from "react";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 
 const navItems = [
-    {name: "Home", href: "#hero"},
-    {name: "Results", href: "#results"},
-    {name: "Drivers", href: "#drivers"},
-    {name: "Teams", href: "#teams"},
-    {name: "Simulator", href: "#simulator"},
-
+  { name: "Home", href: "/" },
+  { name: "About", href: "/about" },
+  { name: "Results", href: "/results" },
+  { name: "Drivers", href: "/drivers" },
+  { name: "Teams", href: "/teams" },
+  { name: "Simulator", href: "/simulator" },
 ];
 
-
 export const Navbar = () => {
-    const [isScrolled, setIsScrolled] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
+  const location = useLocation();
+  const navigate = useNavigate();
 
-    useEffect(() => {
-        const handleScroll = () => {
-            setIsScrolled(window.screenY > 10);
-        };
+  useEffect(() => {
+    const handleScroll = () => setIsScrolled(window.scrollY > 10);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
-        window.addEventListener("scroll", handleScroll);
+  const handleAnchorClick = (e, href) => {
+    e.preventDefault();
 
-        return () => window.removeEventListener("scroll", handleScroll);
-    }, []);
+    if (location.pathname === "/") {
+      const section = document.querySelector(href);
+      if (section) {
+        section.scrollIntoView({ behavior: "smooth" });
+      }
+    } else {
+      navigate("/" + href);
+    }
+  };
 
-    return (
-        <nav   
-            className={cn(
-                "fixed w-full z-40 transition-all duration-300",
-                isScrolled ? "py-3 bg-background/80 backdrop-blur-md shadow-xs" : "py-5"
-            )}
+  return (
+    <nav
+      className={cn(
+        "fixed w-full z-40 transition-all duration-300 backdrop-blur-md",
+        isScrolled
+          ? "py-3 shadow-xs bg-black/10 dark:bg-white/10"
+          : "py-5 bg-transparent"
+      )}
+    >
+      <div className="container flex items-center justify-between">
+        <Link
+          to="/"
+          className="text-xl font-bold text-foreground flex items-center"
         >
-            <div className="container flex items-center justify-between">
-                <a 
-                    className="text-xl font-bold text-primary flex items-center"
-                    href="#hero"
-                >
-                    <span className="relative z-10">
-                        <span className="text-glow text-foreground"> Formula 1 </span>{" "} 
-                        Simulator
-                    </span>
-                </a>
+          <span className="relative z-10">
+            <span className="text-primary">Project</span> F1
+          </span>
+        </Link>
 
-
-                <div className="hidden md:flex space-x-8">
-                    {navItems.map((item, key) => (
-                        <a 
-                            key={key} 
-                            href={item.href} 
-                            className="text-foreground/80 hover:text-primary transition-colors duration-300"
-                        >
-                            {item.name}
-                        </a>
-                    ))}
-                </div>
-            </div>
-        </nav>
-    ); 
+        <div className="hidden md:flex space-x-8">
+          {navItems.map((item, key) =>
+            item.href.startsWith("#") ? (
+              <a
+                key={key}
+                href={item.href}
+                onClick={(e) => handleAnchorClick(e, item.href)}
+                className="text-foreground/80 hover:text-primary transition-colors duration-300"
+              >
+                {item.name}
+              </a>
+            ) : (
+              <Link
+                key={key}
+                to={item.href}
+                className="text-foreground/80 hover:text-primary transition-colors duration-300"
+              >
+                {item.name}
+              </Link>
+            )
+          )}
+        </div>
+      </div>
+    </nav>
+  );
 };
