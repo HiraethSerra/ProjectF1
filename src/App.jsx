@@ -2,6 +2,8 @@ import { Home } from "./pages/Home";
 import { ResultsPage } from "./pages/ResultsPage";
 import { BrowserRouter, Routes, Route } from "react-router-dom"; 
 import { NotFound } from "./pages/NotFound";
+import Teams from "./pages/Teams";
+
 import './index.css';
 
 
@@ -14,6 +16,7 @@ function App() {
             <Route index element={<Home />}/>
             <Route path="/results" element={<ResultsPage />} />
             <Route path="*" element={<NotFound />}/>
+            <Route path="/teams" element={<Teams />} />
         </Routes>
       </BrowserRouter>
     </>
