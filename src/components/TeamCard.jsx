@@ -14,7 +14,7 @@ import albon from '../assets/drivers/albon.jpg';
 import hadjar from '../assets/drivers/hadjar.jpg';
 import colapinto from '../assets/drivers/colapinto.jpg';
 import lawson from '../assets/drivers/lawson.jpg';
-import bortoleto from '../assets/drivers/bortoleto.jpg'; // corrected spelling
+import bortoleto from '../assets/drivers/bortoleto.jpg';
 import bearman from '../assets/drivers/bearman.jpg';
 import hulkenberg from '../assets/drivers/hulkenberg.jpg';
 import sainz from '../assets/drivers/sainz.jpg';
@@ -37,7 +37,7 @@ const driverImages = {
   colapinto,
   lawson,
   bortoleto,
-  bearman, 
+  bearman,
   hulkenberg,
   sainz,
 };
@@ -55,25 +55,42 @@ export default function TeamCard({
       className="relative rounded-xl overflow-hidden p-5 text-white shadow-lg"
       style={{
         background: gradient || color,
-        height: "220px" // smaller cards
+        height: "220px",
+        width: "100%",
+        position: "relative"
       }}
     >
+      {/* Pattern background behind the car */}
+      <div
+        className="absolute bottom-0 left-0 right-0 h-1/2 opacity-40 z-0"
+        style={{
+          backgroundImage:
+            "repeating-linear-gradient(45deg, rgba(255,255,255,0.1) 0, rgba(255,255,255,0.1) 2px, transparent 2px, transparent 6px)"
+        }}
+      />
+
       {/* Team name + drivers */}
       <div className="relative z-20">
-        <h2 className="text-2xl font-extrabold tracking-tight">{name}</h2>
+        <h2 className="text-3xl font-extrabold tracking-tight">{name}</h2>
 
-        <div className="flex gap-5 mt-2">
+        <div className="flex gap-6 mt-3">
           {drivers.map((d, idx) => {
-            const lastName = d.split(' ').slice(-1)[0].toLowerCase();
+            const parts = d.split(" ");
+            const last = parts.pop();
+            const first = parts.join(" ");
+            const key = last.toLowerCase();
+
             return (
-              <div key={idx} className="flex items-center gap-2">
+              <div key={idx} className="flex items-center gap-3">
                 <img
-                  src={driverImages[lastName]}
-                  className="w-10 h-10 object-cover rounded-full"
-                  style={{ objectPosition: "top" , objectFit: "cover" }}
+                  src={driverImages[key]}
+                  className="w-12 h-12 object-cover rounded-full"
+                  style={{ objectPosition: "top" }}
                   alt={d}
                 />
-                <span className="text-sm font-semibold">{d}</span>
+                <span className="text-base font-semibold">
+                  {first} <strong>{last}</strong>
+                </span>
               </div>
             );
           })}
@@ -88,18 +105,17 @@ export default function TeamCard({
       )}
 
       {/* Car image */}
-    <img
+      <img
         src={carImage}
         alt="car"
-        className="absolute bottom-0 pointer-events-none"
-            style={{
-            left: "0px", 
-            bottom: "0px" ,          // tiny space from the left edge
-            width: "auto",
-            height: "40%",       // slightly larger than container to cover bottom area
-            objectFit: "cover",
-            objectPosition: "left bottom",
-            zIndex: 10
+        className="absolute bottom-0 pointer-events-none z-10"
+        style={{
+          left: "0px",
+          bottom: "0px",
+          width: "auto",
+          height: "40%",
+          objectFit: "cover",
+          objectPosition: "left bottom"
         }}
       />
     </div>
