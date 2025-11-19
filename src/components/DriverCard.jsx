@@ -70,7 +70,7 @@ export default function DriverCard({
       />
 
       {/* Text info (flush left, stacked vertically) */}
-      <div className="absolute top-5 left-2 z-20 flex flex-col items-start text-left">
+      <div className="absolute top-3 left-4 z-20 flex flex-col items-start text-left">
         <h2 className="text-2xl font-bold">
           {firstName} <strong>{lastName}</strong>
         </h2>

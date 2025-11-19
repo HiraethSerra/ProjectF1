@@ -57,7 +57,7 @@ export default function TeamCard({
         background: gradient || color,
         height: "220px",
         width: "100%",
-        position: "relative"
+        position: " content-box"
       }}
     >
       {/* Pattern background behind the car */}
