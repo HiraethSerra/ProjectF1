@@ -39,10 +39,11 @@ export const Navbar = () => {
       className={cn(
         "fixed w-full z-40 transition-all duration-300 backdrop-blur-md",
         isScrolled
-          ? "py-3 shadow-xs bg-black/10 dark:bg-white/10"
-          : "py-5 bg-transparent"
+          ? "py-3 bg-black/10 dark:bg-white/10 shadow-[0_4px_20px_rgba(0,0,0,0.12)] dark:shadow-[0_4px_20px_rgba(255,255,255,0.40)]"
+          : "py-5 bg-noise bg-white/30 dark:bg-black/20 shadow-[0_4px_20px_rgba(0,0,0,0.06)] dark:shadow-[0_4px_20px_rgba(255,255,255,0.40)]"
       )}
     >
+
       <div className="container flex items-center justify-between">
         <Link
           to="/"

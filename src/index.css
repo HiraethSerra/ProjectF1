@@ -1,6 +1,31 @@
-/* ✅ Sleek F1-style fonts */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap');
+/* ----------------------------- */
+/* ✔ Load Formula 1 local fonts  */
+/* ----------------------------- */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap');
 @import "tailwindcss";
+
+
+@font-face {
+  font-family: "F1 Regular";
+  src: url("src/assets/fonts/Formula1-Regular_web_0.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "F1 Bold";
+  src: url("src/assets/fonts/Formula1-Bold_web_0.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "F1 Wide";
+  src: url("src/assets/fonts/Formula1-Wide_web_0.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+}
+
 
 @theme {
   --color-border: hsl(var(--border));
@@ -61,21 +86,34 @@
   }
 
   * { @apply border-border; }
-
   html { @apply scroll-smooth; }
 
+  /* ----------------------------------- */
+  /* ✔ Body uses Formula1 Regular       */
+  /* ----------------------------------- */
   body {
     @apply bg-background text-foreground transition-colors duration-300;
-    font-family: 'Inter', sans-serif; /* ✅ Sleek, clean body font */
-    font-feature-settings: "rlig" 1, "calt" 1;
+    font-family: "F1 Regular", Inter, sans-serif;
+    font-weight: 400;
   }
 
-  h1, h2, h3, h4 {
-    font-family: 'Space Grotesk', sans-serif; /* ✅ Tech-sleek headings */
+  /* ----------------------------------- */
+  /* ✔ Headers use Formula1 Bold        */
+  /* ----------------------------------- */
+  h1, h2, h3, h4, h5, h6 {
+    font-family: "F1 Bold", sans-serif;
+    font-weight: 700;
     letter-spacing: 0.01em;
   }
 }
 
+/* Optional utility: F1 Wide */
+.f1-wide {
+  font-family: "F1 Wide", sans-serif;
+  font-weight: 400;
+}
+
+/* ---- Utilities remain unchanged ---- */
 @utility container {
   margin-inline: auto;
   padding-inline: 2rem;
@@ -84,33 +122,4 @@
   @media (width >= 1024px) { max-width: 1024px; }
   @media (width >= 1280px) { max-width: 1280px; }
   @media (width >= 1400px) { max-width: 1400px; }
-}
-
-@utility text-glow {
-  @apply relative;
-  text-shadow: 0 0 6px rgba(255,0,0,0.3); /* subtler glow */
-}
-
-@utility card-hover {
-  @apply transition-transform duration-300 hover:scale-[1.02] hover:shadow-lg;
-}
-
-@utility gradient-border {
-  @apply relative rounded-md;
-  background: linear-gradient(to right, hsl(var(--card)), hsl(var(--card)));
-  background-clip: padding-box;
-  border: 1px solid transparent;
-}
-
-@utility cosmic-button {
-  @apply px-6 py-2 rounded-full bg-primary text-primary-foreground font-medium 
-         transition-all duration-300 hover:shadow-[0_0_10px_rgba(255,0,0,0.4)]
-         hover:scale-105 active:scale-95;
-}
-
-#root {
-  max-width: 100%;
-  margin: 0 auto;
-  padding: 0;
-  text-align: center;
 }
