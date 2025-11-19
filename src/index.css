@@ -1,6 +1,3 @@
-/* ----------------------------- */
-/* ✔ Load Formula 1 local fonts  */
-/* ----------------------------- */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap');
 @import "tailwindcss";
 
@@ -88,18 +85,13 @@
   * { @apply border-border; }
   html { @apply scroll-smooth; }
 
-  /* ----------------------------------- */
-  /* ✔ Body uses Formula1 Regular       */
-  /* ----------------------------------- */
+
   body {
     @apply bg-background text-foreground transition-colors duration-300;
     font-family: "F1 Regular", Inter, sans-serif;
     font-weight: 400;
   }
 
-  /* ----------------------------------- */
-  /* ✔ Headers use Formula1 Bold        */
-  /* ----------------------------------- */
   h1, h2, h3, h4, h5, h6 {
     font-family: "F1 Bold", sans-serif;
     font-weight: 700;
@@ -107,13 +99,12 @@
   }
 }
 
-/* Optional utility: F1 Wide */
+
 .f1-wide {
   font-family: "F1 Wide", sans-serif;
   font-weight: 400;
 }
 
-/* ---- Utilities remain unchanged ---- */
 @utility container {
   margin-inline: auto;
   padding-inline: 2rem;
