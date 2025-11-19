@@ -1,6 +1,5 @@
 import { Navbar } from "@/components/Navbar";
 import DriverCard from "@/components/DriverCard";
-import { ThemeToggle } from "@/components/ThemeToggle";
 
 // Import flags
 import nlFlag from "@/assets/flags/nl.png";
@@ -18,7 +17,6 @@ import caFlag from "@/assets/flags/ca.png";
 import thFlag from "@/assets/flags/th.png";
 import nzFlag from "@/assets/flags/nz.png"; 
 
-// ... import other flags as needed
 
 export default function Drivers() {
   return (
@@ -28,7 +26,6 @@ export default function Drivers() {
       <div className="container pt-32 pb-16">
         <div className="flex justify-between items-center mb-10">
           <h1 className="text-4xl font-extrabold tracking-tight">F1 Drivers</h1>
-          <ThemeToggle />
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">

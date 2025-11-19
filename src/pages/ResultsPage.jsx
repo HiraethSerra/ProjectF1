@@ -1,5 +1,4 @@
 import { Navbar } from "@/components/Navbar";
-import { ThemeToggle } from "../components/ThemeToggle";
 import { StarBackground } from "@/components/StarBackground";
 import { useState } from "react";
 
@@ -22,7 +21,6 @@ export const ResultsPage = () => {
 
   return (
     <>
-      <ThemeToggle />
       <StarBackground />
       <Navbar />
 
