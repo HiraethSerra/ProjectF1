@@ -75,7 +75,7 @@ export default function DriverCard({
           {firstName} <strong>{lastName}</strong>
         </h2>
         <p className="text-sm mt-1">{team}</p>
-        <p className="text-lg font-bold mt-1">#{number}</p>
+        <p className="text-lg font-bold mt-1">{number}</p>
       </div>
 
       {/* Flag (very small) bottom-left */}
@@ -91,8 +91,8 @@ export default function DriverCard({
         alt={`${firstName} ${lastName}`}
         className="absolute right-20 z-10 pointer-events-none"
         style={{
-          height: "450px", // roughly waist-to-head
-          top: "20px",     // top slightly below card top
+          height: "450px", 
+          top: "20px",     
           objectFit: "cover",
           objectPosition: "center bottom",
         }}

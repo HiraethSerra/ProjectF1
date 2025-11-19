@@ -64,6 +64,22 @@
     70% { opacity: 1; }
     100% { transform: rotate(215deg) translateX(-500px); opacity: 0; }
   }
+
+  @keyframes carRun {
+  0% { transform: translateX(-50px); }
+  100% { transform: translateX(350px); }
+  }
+
+  @keyframes barRun {
+    0% { transform: translateX(-150px); }
+    100% { transform: translateX(350px); }
+  }
+
+  @keyframes trackMove {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(300px); }
+  }
+
 }
 
 @layer base {
@@ -112,6 +128,19 @@
   font-family: "F1 Wide", sans-serif;
   font-weight: 400;
 }
+
+.animate-carRun {
+  animation: carRun 2s linear infinite;
+}
+
+.animate-barRun {
+  animation: barRun 1.8s linear infinite;
+}
+
+.animate-trackMove {
+  animation: trackMove 2.2s linear infinite;
+}
+
 
 /* ---- Utilities remain unchanged ---- */
 @utility container {

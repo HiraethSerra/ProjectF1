@@ -1,22 +1,18 @@
 import {Navbar} from "@/components/Navbar";
 import TeamCard from "@/components/TeamCard";
-import {ThemeToggle} from "@/components/ThemeToggle"; // if you use one
 
 export default function Teams() {
   return (
     <div className="min-h-screen w-full bg-background text-foreground">
-      {/* NAVBAR */}
+      
       <Navbar />
 
-      {/* Page max width */}
       <div className="container pt-32 pb-16">
-        {/* Page head */}
+
         <div className="flex justify-between items-center mb-10">
           <h1 className="text-4xl font-extrabold tracking-tight">F1 Teams</h1>
-          <ThemeToggle />
         </div>
 
-        {/* Grid of teams */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
 
           <TeamCard
