@@ -78,11 +78,3 @@ The app supports **light and dark themes** with a dynamic toggle integrated into
 📄 License
 
 [MIT](LICENSE) – Free to use, modify, and distribute.
-
-
-
----
-
-If you want, I can write a **final “GitHub-ready” README** including badges and animated demo sections that looks **premium and professional**.
-
-Do you want me to do that next?
